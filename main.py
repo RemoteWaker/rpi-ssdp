@@ -10,7 +10,9 @@ import socket
 
 bind = os.getenv("BIND_ADDRESS", "0.0.0.0")
 
-server = SSDPServer(usn="rpi:remotewaker:" + socket.gethostname(), address=bind, device_type="ssdp:remotewaker", location="http://" + bind + "/setup")
+usn = os.getenv("BALENA_DEVICE_TYPE") + ":remotewaker:" + os.getenv("BALENA_DEVICE_UUID")
+
+server = SSDPServer(usn=usn, address=bind, device_type="ssdp:remotewaker", location="http://" + bind + "/setup")
 
 
 server.serve_forever()
