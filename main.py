@@ -12,7 +12,7 @@ bind = os.getenv("BIND_ADDRESS", "0.0.0.0")
 
 usn = os.getenv("BALENA_DEVICE_TYPE") + ":remotewaker:" + os.getenv("BALENA_DEVICE_UUID")
 
-server = SSDPServer(usn=usn, address=bind, device_type="ssdp:remotewaker", location="http://" + bind + ":8080/setup")
+server = SSDPServer(usn=usn, address=bind, device_type="ssdp:remotewaker", location="http://" + bind + "/setup")
 
 
 server.serve_forever()
